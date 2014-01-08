@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<meta charset="utf-8">
+    <!--[if IE]>
+    <script  src="modernizr.js" ></script>
+    <![endif]-->
+<title>HTML5 Form example</title>
+<link rel="stylesheet" href="http://yui.yahooapis.com/2.2.0/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
+<link href="alcala2.css" rel="stylesheet" type="text/css" media="all" />
+<!--CSS file (default YUI Sam Skin) --> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.0/build/calendar/assets/skins/sam/calendar.css"> 
+
+
+
+  <link rel="shortcut icon" href="http://l.yimg.com/a/i/ydn/favicon2.ico" type="image/x-icon">
+
+<style>
+/* base styles */
+article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+mark, time {display:inline;}
+ body {background:#F7E3C6;}
+
+/* form styles 
+=========================================*/
+
+form {
+counter-reset: fieldsets;
+padding: 20px;
+width: 500px;
+}
+
+
+form fieldset {
+border: none;
+margin-bottom: 10px;
+}
+
+form fieldset:last-of-type {
+margin-bottom: 0;
+}
+
+form legend {
+color: #384313;
+font-size: 16px;
+font-weight: bold;
+padding-bottom: 10px;
+}
+
+form > fieldset > legend:before {
+content: "Step " counter(fieldsets) ": ";
+counter-increment: fieldsets;
+}
+
+form fieldset fieldset legend {
+color: #111111;
+font-size: 13px;
+font-weight: normal;
+padding-bottom: 0;
+}
+
+form ul li, ul.inline {
+background:none;	
+line-height: 30px;
+list-style: none;
+padding: 5px 10px;
+margin-bottom: 2px;
+}
+
+form ul.inline li{
+	border:none; 
+	float:left;
+	vertical-align:middle;
+	}
+	
+ 
+	
+form ul.inline label, form ul.inline input, form li.inline label, form li.inline input{
+	width:auto;
+	margin:0 2px;
+	}
+.inline {float:left;}
+
+form ul ul li {
+background: none;
+border: none;
+float: left;
+}
+
+form label {
+float: left;
+font-size: 13px;
+font-weight:bold;
+width: 150px;
+}
+
+form fieldset fieldset label {
+background:none no-repeat left 50%;
+line-height: 20px;
+
+}
+
+
+form fieldset fieldset label:hover {
+cursor: pointer;
+}
+
+form input:not([type=radio]),
+form textarea {
+background: #ffffff;
+border: 1px solid #999;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+-khtml-border-radius: 3px;
+border-radius: 3px;
+font: italic 13px Georgia, "Times New Roman", Times, serif;
+outline: none;
+padding: 5px;
+width: 250px;
+}
+
+form input:not([type=submit]):focus,
+form input:not([type=radio]):focus,
+form input:not([type=checkbox]):focus,
+form textarea:focus {
+  -webkit-box-shadow:0 0 25px #ccc;
+  -moz-box-shadow:0 0 25px #ccc;
+  box-shadow:0 0 25px #ccc;
+  
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  transform: scale(1.25);
+  
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+		
+/* The interesting bit */
+input[type=text]:not(:focus), textarea:not(:focus) {
+  opacity:0.75;
+}
+		
+
+
+form input[type=radio], form input[type=checkbox] {
+float: left;
+margin: 5px;
+}
+
+form button {
+background: #AD4121;
+border: none;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+-khtml-border-radius: 20px;
+border-radius: 20px;
+color: #ffffff;
+display: block;
+letter-spacing: 1px;
+margin: auto;
+padding: 7px 25px;
+text-shadow: 0 1px 1px #000000;
+}
+
+form button:hover {
+background: #1e2506;
+cursor: pointer;
+}
+
+		
+form input:required, 
+form textarea:required {
+  border:2px solid yellow;						
+}
+
+form input:valid,
+form textarea:valid {
+  border:1px solid green;			
+}		
+
+form input:focus:invalid,
+form textarea:focus:invalid {
+  border:1px solid red;							
+}
+form .holidays li {float:none; margin:0px;  padding:0; }
+form .holidays li li{list-style-type:disc;margin:0px 15px;}
+
+#reservationspage aside {
+	float:right;
+	}
+	#logo {
+    display: block;
+    background: #375283;
+    height: 33px;
+    padding: 5px;
+}
+#logo img { border: none }
+
+h1 {font-weight:bold; margin:10px;}
+</style>
+ 
+ 
+</head>
+
+<body>
+<section id="doc2" class="yui-t7">
+   <header id="hd" role="banner">
+   <a href="/library/" id="logo"><img src="http://yaccessibilityblog.com/library/wp-content/themes/yAccess/img/y_accessibility_library.png" alt="Yahoo! Accessibility Library" /></a>
+
+<h1>Sample form with HTML5 inputs</h1>
+	
+
+</header>
+<section id="bd"  role="main">
+<header>
+<h1>Sample form</h1>
+</header>
+
+<form method="get" action="#" >
+<!-- as screen readers with combos that recognize aria will not know of the asterisk, let's use role="presentation" to hid this -->
+<p role="presentation"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAA3NCSVQICAjb4U%2FgAAAAM1BMVEWqQSD348bMiGi4Xz%2Fkupztz7HapojCc1OvSyrVnH29aUmzVTTpxafy2bzHfV7QknPfsJLQHZFzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M0BrLToAAAABV0RVh0Q3JlYXRpb24gVGltZQAyLzE2LzEx%2BOdE2AAAAFlJREFUGJWlztkKgDAMRNHbfVf%2F%2F2sNVNoq6IuBQDgMQ1CP4QV2uEMiLrBpZ8nKB9vBAYZYYLsgyJ0M5DQ6LCHmpbQZJOQnSLxmOAZoqXOUOv%2Bore%2FH67%2FgBFpGAkWNSLVmAAAAAElFTkSuQmCC" alt="required icon"  /> = Required Input</p>
+<fieldset>
+<legend>Contact Information</legend>    
+<ul>
+<li>  
+<label for="realname">Owner Name <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAA3NCSVQICAjb4U%2FgAAAAM1BMVEWqQSD348bMiGi4Xz%2Fkupztz7HapojCc1OvSyrVnH29aUmzVTTpxafy2bzHfV7QknPfsJLQHZFzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M0BrLToAAAABV0RVh0Q3JlYXRpb24gVGltZQAyLzE2LzEx%2BOdE2AAAAFlJREFUGJWlztkKgDAMRNHbfVf%2F%2F2sNVNoq6IuBQDgMQ1CP4QV2uEMiLrBpZ8nKB9vBAYZYYLsgyJ0M5DQ6LCHmpbQZJOQnSLxmOAZoqXOUOv%2Bore%2FH67%2FgBFpGAkWNSLVmAAAAAElFTkSuQmCC" alt="required"  role="presentation"/></label>
+<input type="text"  id="realname" name="realname" size="30"  value="" required aria-required="true" placeholder="First and Last Name" />
+</li>
+<li>
+<label for="phone">Phone # <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAA3NCSVQICAjb4U%2FgAAAAM1BMVEWqQSD348bMiGi4Xz%2Fkupztz7HapojCc1OvSyrVnH29aUmzVTTpxafy2bzHfV7QknPfsJLQHZFzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M0BrLToAAAABV0RVh0Q3JlYXRpb24gVGltZQAyLzE2LzEx%2BOdE2AAAAFlJREFUGJWlztkKgDAMRNHbfVf%2F%2F2sNVNoq6IuBQDgMQ1CP4QV2uEMiLrBpZ8nKB9vBAYZYYLsgyJ0M5DQ6LCHmpbQZJOQnSLxmOAZoqXOUOv%2Bore%2FH67%2FgBFpGAkWNSLVmAAAAAElFTkSuQmCC" alt="required"  role="presentation"/> <span id="error_phone" class="errormessage"></span></label>
+<input type="tel" id="phone" name="phone" size="30" value="" placeholder="(760) 436-6619" required aria-required="true" />
+</li>
+<li>
+<label for="email">E-Mail Address <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAA3NCSVQICAjb4U%2FgAAAAM1BMVEWqQSD348bMiGi4Xz%2Fkupztz7HapojCc1OvSyrVnH29aUmzVTTpxafy2bzHfV7QknPfsJLQHZFzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M0BrLToAAAABV0RVh0Q3JlYXRpb24gVGltZQAyLzE2LzEx%2BOdE2AAAAFlJREFUGJWlztkKgDAMRNHbfVf%2F%2F2sNVNoq6IuBQDgMQ1CP4QV2uEMiLrBpZ8nKB9vBAYZYYLsgyJ0M5DQ6LCHmpbQZJOQnSLxmOAZoqXOUOv%2Bore%2FH67%2FgBFpGAkWNSLVmAAAAAElFTkSuQmCC" alt="required"  role="presentation"/> <span id="error_email" class="errormessage"></span></label>
+
+<input type="email" id="email" name="email" size="30" value=""  required aria-required="true" placeholder="example@yahoo.com" />
+</li>
+<li>
+<p>The following input requires a twitter page (i.e. http://twitter.com/yahooaccess). Try it in different browsers to watch it go from invalid (red border) to green as you enter a twitter url.</p>
+<label for="url">Twitter home page <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAMAAADjcdz2AAAAA3NCSVQICAjb4U%2FgAAAAM1BMVEWqQSD348bMiGi4Xz%2Fkupztz7HapojCc1OvSyrVnH29aUmzVTTpxafy2bzHfV7QknPfsJLQHZFzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M0BrLToAAAABV0RVh0Q3JlYXRpb24gVGltZQAyLzE2LzEx%2BOdE2AAAAFlJREFUGJWlztkKgDAMRNHbfVf%2F%2F2sNVNoq6IuBQDgMQ1CP4QV2uEMiLrBpZ8nKB9vBAYZYYLsgyJ0M5DQ6LCHmpbQZJOQnSLxmOAZoqXOUOv%2Bore%2FH67%2FgBFpGAkWNSLVmAAAAAElFTkSuQmCC" alt="required"  role="presentation"/> <span id="error_email" class="errormessage"></span></label>
+
+<input type="url" id="url" name="url" size="30" value="" pattern="https?://(?:www\.)?twitter\.com/.+" required aria-required="true" placeholder="http://twitter.com/example" />
+</li>
+<li>
+<label for="address">Address:</label>
+<input type="text" id="address" name="address" size="30" value="" />
+</li>
+<li>
+<label for="city">City</label>
+<input type="text" id="city" name="city" size="30" value="" />
+</li>
+<li>
+<label for="state">State</label>
+<input type="text" id="state" name="state" size="30" value="California" />
+</li>
+
+<li>
+<label for="zipcode">Zipcode</label>
+<input type="text" id="zipcode" name="zipcode" size="30" value="" />
+</li>
+</ul>
+ 
+</fieldset>
+
+<fieldset>
+<legend>Other inputs</legend>
+<p>The following inputs are not fully supported and you may find partial usability with screen readers.</p>
+<ul>
+<li>
+<label for="date">Birthday</label>
+<input type="date" id="date" name="date">
+</li>
+<li>
+<label for="color">Desired color</label>
+<input type="color" name="color" id="color">
+</li>
+</ul>
+<fieldset>
+<legend>Numbers</legend>
+<ul>
+<li>
+<label for="number-select">Select a number</label>
+<input type="number"
+       min="0"
+       max="10"
+       step="2"
+       value="6"
+       name="number-select"
+       id="number-select">
+</li>
+<li>
+ <p>The following input uses the HTML5 type="range" and also includes ARIA slider attributes.</p>      
+<label for"number-range">Select a number via a slider</label> 
+<input type="range"
+       min="0" aria-value-min="0"
+       max="10" aria-value-max="10"
+       step="2"
+       value="6" aria-value-now="6"
+       role="slider">
+</li>
+</ul>            
+</fieldset>
+
+
+</fieldset>
+
+
+<button type="submit">Make Your Reservation</button>
+</fieldset>
+
+
+</form>
+   <aside id="formstuff">
+   
+   </aside>
+
+
+</section>
+
+<footer id="ft"  role="contentinfo">
+
+</footer>
+
+
+
+
+</section>
+
+</body>
+</html><!-- text below generated by server. PLEASE REMOVE --><!-- Counter/Statistics data collection code --><script language="JavaScript" src="http://l.yimg.com/d/lib/smb/js/hosting/cp/js_source/whv2_001.js"></script><script language="javascript">geovisit();</script><noscript><img src="http://visit.webhosting.yahoo.com/visit.gif?us1340388826" alt="setstats" border="0" width="1" height="1"></noscript>
